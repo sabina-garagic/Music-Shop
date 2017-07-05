@@ -1,0 +1,22 @@
+{
+  "name": "music-shop-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha **/*.specs.js",
+    "test:watch": "mocha **/*.specs.js --watch",
+    "dev": "nodemon -x node server.js",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "es6-promise": "^4.1.1",
+    "expect.js": "^0.3.1",
+    "express": "^4.15.3",
+    "isomorphic-fetch": "^2.2.1",
+    "mocha": "^3.4.2"
+  }
+}

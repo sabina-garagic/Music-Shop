@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Music Shop</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+  <script src="./index.js" defer="defer"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="./style/style.css">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row shop-title">The Music Shop</div>
+  </div>
+  <div class="container main-wrapper">
+    <div class="row">
+      <div class="col-md-7 search-box">
+        <h3>Search for any music album here:</h3>
+        <input class="search-input" type="text" data-bind="value: albumTitle" placeholder="Search term..." />
+        <button data-bind="click: searchAlbumsByTitle" class="btn btn-primary btn-sm">SEARCH</button>
+      </div>
+      <div class="col-md-4 shopping-cart-container">
+        <div class="row shopping-cart-title">SHOPPING CART</div>
+        <div data-bind="foreach: albumsInShoppingCart">
+          <div class="row shopping-cart-album">
+            <div class="col-md-6"><a href="#" data-bind="click: $parent.removeAlbumFromCart"><b>X</b></a> <span data-bind="text: name"></span></div>
+            <div class="col-md-6"><span class="price" data-bind="text: $parent.formattedPriceRegular"></span></div>
+          </div>
+        </div>
+        <div class="row shopping-cart-calculations">
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10 padding-left-right-0"><span>Total:</span><span class="price" data-bind="text: formattedPriceTotal"></span></div>
+          </div>
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10 padding-left-right-0"><span>Discount:</span><span class="price" data-bind="text: formattedPriceDiscount"></span></div>
+          </div>
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10 line-separator"></div>
+          </div>
+          <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10 padding-left-right-0"><span><b>Grand Total:</b></span><span class="price"><b data-bind="text: formattedPriceGrandTotal"></b></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <h2 data-bind="visible: albumTitle() !== ''">Search results for &quot;<span data-bind="text: albumTitle"></span>&quot;</h2>
+      <div class="col-md-10" data-bind="foreach: albums">
+        <div class="album-wrapper">
+          <div><img class="album-cover" data-bind="attr:{ src: albumCoverImageUrl != '' ? albumCoverImageUrl : './img/no-image.jpg'  }"></div>
+          <h3 class="album-title"><span data-bind="text: artists[0].artist.name"></span>: <span data-bind="text: title"></span></h3>
+          <button class="btn btn-default grey-btn" data-bind="click: $parent.addAlbumToCart">Buy for EUR 9.99 &gt;&gt; </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
